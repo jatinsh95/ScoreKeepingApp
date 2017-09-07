@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>MainActivity.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,128,0); font-weight: bold; }
+.s3 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+MainActivity.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">package </span><span class="s1">com.example.jatin.scorekeeperapp; 
+ 
+</span><span class="s0">import </span><span class="s1">android.support.v7.app.AppCompatActivity; 
+</span><span class="s0">import </span><span class="s1">android.os.Bundle; 
+</span><span class="s0">import </span><span class="s1">android.view.View; 
+</span><span class="s0">import </span><span class="s1">android.widget.EditText; 
+</span><span class="s0">import </span><span class="s1">android.widget.TextView; 
+</span><span class="s0">import </span><span class="s1">android.widget.Toast; 
+ 
+ 
+ 
+</span><span class="s0">public class </span><span class="s1">MainActivity </span><span class="s0">extends </span><span class="s1">AppCompatActivity { 
+ 
+    @Override 
+    </span><span class="s0">protected void </span><span class="s1">onCreate(Bundle savedInstanceState) { 
+        </span><span class="s0">super</span><span class="s1">.onCreate(savedInstanceState); 
+        setContentView(R.layout.activity_main); 
+    } 
+ 
+    </span><span class="s0">public </span><span class="s1">String first,second,message = </span><span class="s2">&quot;&quot;</span><span class="s1">; 
+    </span><span class="s0">private int </span><span class="s1">score=</span><span class="s3">0</span><span class="s1">,scoreOfTeamA,scoreOfTeamB, ns=</span><span class="s3">0 </span><span class="s1">,no4=</span><span class="s3">0</span><span class="s1">, no6=</span><span class="s3">0</span><span class="s1">; 
+    </span><span class="s0">public void </span><span class="s1">submit_s(View view){ 
+        EditText editText = (EditText) findViewById(R.id.edit); 
+        </span><span class="s0">if</span><span class="s1">(editText.getText().toString().equals(</span><span class="s2">&quot;&quot;</span><span class="s1">)){ 
+            Toast.makeText(</span><span class="s0">this</span><span class="s1">,</span><span class="s2">&quot;!!!Please Enter Team Name!!!&quot;</span><span class="s1">,Toast.LENGTH_SHORT).show(); 
+            </span><span class="s0">return</span><span class="s1">; 
+        } 
+        ns++; 
+        </span><span class="s0">if</span><span class="s1">(ns == </span><span class="s3">1</span><span class="s1">){ 
+            scoreOfTeamA = score; 
+            score=</span><span class="s3">0</span><span class="s1">; 
+            first = editText.getText().toString(); 
+            message =</span><span class="s2">&quot;Team: &quot;</span><span class="s1">+first+</span><span class="s2">&quot; Score: &quot;</span><span class="s1">+scoreOfTeamA; 
+            message += </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">no of fours &quot;</span><span class="s1">+no4; 
+            message += </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">no of six &quot;</span><span class="s1">+no6+</span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">&quot;</span><span class="s1">; 
+            no4=</span><span class="s3">0</span><span class="s1">; 
+            no6=</span><span class="s3">0</span><span class="s1">; 
+ 
+            editText.setText(</span><span class="s2">&quot;&quot;</span><span class="s1">); 
+            TextView textView = (TextView) findViewById(R.id.score); 
+            textView.setText(</span><span class="s2">&quot;0&quot;</span><span class="s1">); 
+        } 
+        </span><span class="s0">if</span><span class="s1">(ns == </span><span class="s3">2</span><span class="s1">){ 
+ 
+            second = editText.getText().toString(); 
+            scoreOfTeamB = score; 
+            message +=</span><span class="s2">&quot;Team: &quot;</span><span class="s1">+second+ </span><span class="s2">&quot; Score: &quot;</span><span class="s1">+scoreOfTeamB; 
+            message += </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">no of fours &quot;</span><span class="s1">+no4; 
+            message += </span><span class="s2">&quot;</span><span class="s0">\n</span><span class="s2">no of six &quot;</span><span class="s1">+no6; 
+            editText.setText(</span><span class="s2">&quot;&quot;</span><span class="s1">); 
+            TextView sc = (TextView) findViewById(R.id.score); 
+            sc.setText(</span><span class="s2">&quot;0&quot;</span><span class="s1">); 
+            no4=</span><span class="s3">0</span><span class="s1">; 
+            no6=</span><span class="s3">0</span><span class="s1">; 
+            TextView textView = (TextView) findViewById(R.id.match_summary); 
+            textView.setText(message); 
+            ns=</span><span class="s3">0</span><span class="s1">; 
+ 
+            </span><span class="s0">if</span><span class="s1">(scoreOfTeamA &gt; scoreOfTeamB){ 
+                Toast.makeText(</span><span class="s0">this</span><span class="s1">,first +</span><span class="s2">&quot; Won the game by &quot;</span><span class="s1">+(scoreOfTeamA-scoreOfTeamB)+</span><span class="s2">&quot; runs&quot; </span><span class="s1">, 
+                        Toast.LENGTH_LONG).show(); 
+            } 
+            </span><span class="s0">else if</span><span class="s1">(scoreOfTeamA &lt; scoreOfTeamB){ 
+                Toast.makeText(</span><span class="s0">this</span><span class="s1">,second+</span><span class="s2">&quot; Won the game by &quot;</span><span class="s1">+(scoreOfTeamB-scoreOfTeamA)+</span><span class="s2">&quot; runs&quot; </span><span class="s1">, 
+                        Toast.LENGTH_LONG).show(); 
+            } 
+            </span><span class="s0">else</span><span class="s1">{ 
+                Toast.makeText(</span><span class="s0">this</span><span class="s1">,</span><span class="s2">&quot; Tie Game &quot;</span><span class="s1">, 
+                        Toast.LENGTH_LONG).show(); 
+ 
+            } 
+        } 
+ 
+    } 
+    </span><span class="s0">public void </span><span class="s1">display(</span><span class="s0">int </span><span class="s1">number){ 
+        TextView textView = (TextView) findViewById(R.id.score); 
+        textView.setText(</span><span class="s2">&quot;&quot;</span><span class="s1">+number); 
+    } 
+    </span><span class="s0">public void </span><span class="s1">add_1(View view){ 
+ 
+        score += </span><span class="s3">1</span><span class="s1">; 
+       display(score); 
+    } 
+    </span><span class="s0">public void </span><span class="s1">add_2(View view){ 
+        score += </span><span class="s3">2</span><span class="s1">; 
+        display(score); 
+    } 
+    </span><span class="s0">public void </span><span class="s1">add_3(View view){ 
+        score += </span><span class="s3">3</span><span class="s1">; 
+        display(score); 
+    } 
+    </span><span class="s0">public void </span><span class="s1">add_4(View view){ 
+        no4++; 
+        score += </span><span class="s3">4</span><span class="s1">; 
+        display(score); 
+    } 
+    </span><span class="s0">public void </span><span class="s1">add_5(View view){ 
+        score += </span><span class="s3">5</span><span class="s1">; 
+        display(score); 
+    } 
+    </span><span class="s0">public void </span><span class="s1">add_6(View view){ 
+        no6++; 
+        score += </span><span class="s3">6</span><span class="s1">; 
+        display(score); 
+    } 
+ 
+} 
+</span></pre>
+</body>
+</html>
